@@ -9,7 +9,7 @@ namespace TBQuestGame.Models
     public abstract class Character
     {
         public enum ActionType{
-            Defend, BasicAttack, SkillOne, SkillTwo, SkillThree
+            Defend, Attack, Neutral
         }
         #region fields
         private int _Id;
@@ -17,9 +17,15 @@ namespace TBQuestGame.Models
         private int _locationId;
         private ActionType _attackType;
         private bool _isAlive;
+        private double _health;
         #endregion
         #region properties
-        public ActionType TypeOfAttack
+        public double Health
+        {
+            get { return _health; }
+            set { _health = value; }
+        }
+        public ActionType StateOfAction
         {
             get { return _attackType;  }
             set { _attackType = value; }
@@ -46,11 +52,24 @@ namespace TBQuestGame.Models
         }
         #endregion
         #region METHODS
-        public virtual string returnName()
+        public virtual string GetName()
         {
             return Name;
         }
         public abstract bool Alive();
         #endregion
+        #region CONSTRUCTORS
+        public Character()
+        {
+
+        }
+        public Character(int id, int locationId, string name)
+        {
+            _Id = id;
+            _locationId = locationId;
+            _name = name;
+        }
+        #endregion
+
     }
 }
