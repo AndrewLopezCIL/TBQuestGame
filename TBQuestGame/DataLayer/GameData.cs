@@ -29,5 +29,15 @@ namespace TBQuestGame.DataLayer
             };
 
         }
+        public static List<string> InitialMessages()
+        {
+            return new List<string>()
+            {
+                "Welcome to the text-based game called Swendiver. In this game you will go on an adventure killing monsters and doing quests, " +
+                "following an exciting storyline, leveling up your character.",
+                "Swendiver was created by Andrew Lopez.",
+                " Enjoy the game!"
+           };
+        }
     }
 }

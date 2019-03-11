@@ -19,9 +19,36 @@ namespace TBQuestGame.PresentationLayer
     /// </summary>
     public partial class GameSessionView : Window
     {
-        public GameSessionView()
+
+        GameSessionViewModel _gameSessionViewModel;
+        private string Messages;
+
+        public GameSessionView(GameSessionViewModel gameSessionViewModel)
         {
+            _gameSessionViewModel = gameSessionViewModel;
+           // ActiveEnemies.Items.Add("Testing");
             InitializeComponent();
+            Messages = _gameSessionViewModel.Messages;
+        }
+
+        private void GameOptions_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InventoryButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SkillsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AttackButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
