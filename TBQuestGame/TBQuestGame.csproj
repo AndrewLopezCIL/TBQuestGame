@@ -62,8 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLayer\GameBusiness.cs" />
+    <Compile Include="DataLayer\A_Hero_Is_Born.cs" />
     <Compile Include="DataLayer\GameData.cs" />
+    <Compile Include="DataLayer\StoryProperties.cs" />
     <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\Enemy.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="PresentationLayer\GameSessionView.xaml.cs">
       <DependentUpon>GameSessionView.xaml</DependentUpon>
