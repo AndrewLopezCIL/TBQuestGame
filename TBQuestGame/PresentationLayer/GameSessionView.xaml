@@ -5,17 +5,100 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBQuestGame.PresentationLayer"
         mc:Ignorable="d"
-        Title="GameSessionView" Height="450" Width="800">
+     Background="LightGray"   Title="Swendiver - Main Game" Height="595.65" Width="944.084">
+
+    <Window.Resources>
+        <Style x:Key="statBarLabels" TargetType="Label">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="FontWeight" Value="bold"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style x:Key="CommandBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Width" Value="550"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+        <Style x:Key="sectionLabel" TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style x:Key="HeaderStyle" TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Window.Resources>
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="225"/>
+            <RowDefinition Height="230"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="400"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="DialogueBox" Width="575" Height="75" Style="{StaticResource CommandBoxStyle}" Margin="10,10,352.6,83"/>
+        <Image x:Name="speakerIcon" Margin="590,10,259.6,83"/>
+        <Button x:Name="GameOptions" Content="Menu" Style="{StaticResource ButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="0.479,0.735" Margin="0,10,-0.4,0"/>
+        <TextBox x:Name="TipsBox" Width="475" Height="75" Style="{StaticResource CommandBoxStyle}" Margin="10,88,452.6,5"/>
+
+        <ProgressBar x:Name="playerShieldBar" Width="375" Height="30" Background="Orange" Foreground="Yellow" Value="100" Grid.Row="2" Margin="10,12.6,552.6,125.4"/>
+        <ProgressBar x:Name="playerHealthBar" Width="400" Height="30" Background="Red" Foreground="Green" Value="100" Grid.Row="2" Margin="10,47.6,527.6,90.4"/>
+        <Label x:Name="playerHealthBarLabel" Content="Health: 100" Style="{StaticResource statBarLabels}" Grid.Row="2" Margin="415,47.6,426.6,90.4"/>
+        <Label x:Name="playerShieldBarLabel" Content="Shield: 50" Style="{StaticResource statBarLabels}" Grid.Row="2" Margin="390,12.6,454.6,125.4"/>
+        <TextBox x:Name="CommandBox" Grid.Row="2" Height="75" Style="{StaticResource CommandBoxStyle}" Margin="10,82.6,394.6,10.4" Width="533"/>
+        <Button x:Name="InventoryButton" Background="PeachPuff" Style="{StaticResource ButtonStyle}" Content="Inventory" Grid.Row="2" Margin="808,93.6,9.6,24.4"/>
+        <Button x:Name="SkillsButton" Background="LightBlue" Style="{StaticResource ButtonStyle}" Content="Skills" Grid.Row="2" Margin="683,93.6,134.6,24.4"/>
+        <Button x:Name="AttackButton" Background="red" Style="{StaticResource ButtonStyle}" Content="Attack" Grid.Row="2" Margin="558,93.6,259.6,24.4"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0"   />
+            <Label Content="Task List" Style="{StaticResource sectionLabel}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <ListBox BorderBrush="Black" BorderThickness="2" Background="LightGray" Grid.Column="0" Height="200" VerticalAlignment="Bottom">
+                <ListBoxItem Background="LightBlue" BorderBrush="Black" BorderThickness="2">
+                <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/sword-icon.png" Height="32" Width="32"/>
+                    <TextBlock FontWeight="Bold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">{LVL 30}</TextBlock>
+                    <TextBlock FontWeight="Bold" FontSize="15.5" VerticalAlignment="Center" HorizontalAlignment="Center">Black Knight</TextBlock>
+                </StackPanel>
+                </ListBoxItem>
+            </ListBox>
+
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1"  />
+
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2"   Height="230" VerticalAlignment="Bottom"/>
+
+            <Label Content="Enemies Battling" Grid.Column="2" Style="{StaticResource sectionLabel}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+
+            <Label x:Name="EnemiesList" Grid.Column="2" Content="List of Enemies" Style="{StaticResource HeaderStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="73.2,99,73.6,99.4"/>
+
+            <ListBox BorderBrush="Black" BorderThickness="2" Grid.Column="2" Background="LightGray" Margin="0.2,30,-0.4,0.4" Grid.ColumnSpan="2">
+                <ListBoxItem Background="Red" BorderBrush="Black" BorderThickness="2">
+                    <StackPanel Orientation="Horizontal" >
+                         <Image Source="/Images/warrior-black.png" Width="32" Height="32"/>
+                        <TextBlock FontWeight="Bold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">{LVL 30}</TextBlock>
+                        <TextBlock FontWeight="Bold" FontSize="15.5" VerticalAlignment="Center" HorizontalAlignment="Center">Black Knight</TextBlock>
+                        </StackPanel>
+                </ListBoxItem>
+            </ListBox>
+
+        </Grid>
     </Grid>
 </Window>

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="BusinessLayer\GameBusiness.cs" />
     <Compile Include="DataLayer\GameData.cs" />
+    <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="PresentationLayer\GameSessionView.xaml.cs">
       <DependentUpon>GameSessionView.xaml</DependentUpon>
@@ -98,6 +99,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\archer-icon.png" />
+    <Resource Include="Images\backpack-icon.png" />
+    <Resource Include="Images\Bandit.png" />
+    <Resource Include="Images\BloodPot.png" />
+    <Resource Include="Images\grayswordiconblack.png" />
+    <Resource Include="Images\grayswordTransparent.png" />
+    <Resource Include="Images\help.png" />
+    <Resource Include="Images\inventory_background.png" />
+    <Resource Include="Images\mage-icon.png" />
+    <Resource Include="Images\MudCrawler.png" />
+    <Resource Include="Images\scuffedspider.png" />
+    <Resource Include="Images\ShieldHealth.png" />
+    <Resource Include="Images\ShieldHealthBIG.png" />
+    <Resource Include="Images\swendivericon.png" />
+    <Resource Include="Images\sword-icon.png" />
+    <Resource Include="Images\warrior-black.png" />
+    <Resource Include="Images\warrior-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
