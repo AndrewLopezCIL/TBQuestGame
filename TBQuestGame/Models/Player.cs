@@ -67,12 +67,12 @@ namespace TBQuestGame.Models
         }
         #endregion
 
-        #region METHODS
+        #region METHODS 
         public override string GetName()
             {
                 return base.GetName();
             }
-
+        
             public override bool Alive()
             {
                 return IsAlive ? true : false;

@@ -10,6 +10,8 @@ namespace TBQuestGame.PresentationLayer
     {
         #region FIELDS
         private Player _player;
+        private double _playerHealth;
+        private double _playerShield;
         private List<string> _messages;
         #endregion
 
@@ -28,6 +30,16 @@ namespace TBQuestGame.PresentationLayer
         {
             get { return string.Join("\n\n",_messages); }
          }
+        public double PlayerHealth
+        {
+            get { return _playerHealth; }
+            set { _playerHealth = value; }
+        }
+        public double PlayerShield
+        {
+            get { return _playerShield; }
+            set { _playerShield = value; }
+        }
         #endregion
 
         #region METHODS
@@ -40,6 +52,8 @@ namespace TBQuestGame.PresentationLayer
         }
         public GameSessionViewModel(Player player, List<string>initialMessages)
         {
+            _playerShield = player.Shield;
+            _playerHealth = player.Health;
             _player = player;
             _messages = initialMessages;
         }

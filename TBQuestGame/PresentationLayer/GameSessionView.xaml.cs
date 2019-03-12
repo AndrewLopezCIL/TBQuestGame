@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TBQuestGame.PresentationLayer;
+using TBQuestGame.DataLayer;
 namespace TBQuestGame.PresentationLayer
 {
     /// <summary>
@@ -23,14 +24,15 @@ namespace TBQuestGame.PresentationLayer
 
         GameSessionViewModel _gameSessionViewModel;
         
-        private string Messages;
-
+        private string Messages; 
+        private double PlayerHealth;
         public GameSessionView(GameSessionViewModel gameSessionViewModel)
         {
             _gameSessionViewModel = gameSessionViewModel;
            // ActiveEnemies.Items.Add("Testing");
             InitializeComponent();
             Messages = _gameSessionViewModel.Messages;
+            PlayerHealth = _gameSessionViewModel.PlayerHealth;
         }
 
         private void GameOptions_Click(object sender, RoutedEventArgs e)
@@ -85,7 +87,8 @@ namespace TBQuestGame.PresentationLayer
         }
           private void AttackButton_Click(object sender, RoutedEventArgs e)
         {
-
+            PlayerHealth -= 5;
+            playerHealthBar.Value = PlayerHealth;
         }
     }
 }

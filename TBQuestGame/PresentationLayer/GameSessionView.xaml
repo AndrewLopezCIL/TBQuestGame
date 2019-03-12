@@ -61,12 +61,12 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                <ProgressBar x:Name="playerShieldBar" Width="375" Height="30" Background="Orange" Margin="2.5" Foreground="Yellow" Value="100" Grid.Column="0" HorizontalAlignment="Left"  />
-                    <Label x:Name="playerShieldBarLabel" Content="Shield: 50" Style="{StaticResource statBarLabels}" Margin="2.5" Grid.Column ="0"  />
+                <ProgressBar x:Name="playerShieldBar" Value="{Binding PlayerShield}" Width="375" Height="30" Background="Orange" Margin="2.5" Foreground="Yellow" Grid.Column="0" HorizontalAlignment="Left"  />
+                    <Label x:Name="playerShieldBarLabel" Content="{Binding PlayerShield}" Style="{StaticResource statBarLabels}" Margin="2.5" Grid.Column ="0"  />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                <ProgressBar x:Name="playerHealthBar" Width="400" Height="30" Background="Red" Foreground="Green" Value="100" Margin="2.5" Grid.Column="0" HorizontalAlignment="Left" />
-                    <Label x:Name="playerHealthBarLabel" Content="Health:"  Style="{StaticResource statBarLabels}" Margin="2.5" Grid.Column="0"  />
+                <ProgressBar x:Name="playerHealthBar" Width="400" Height="30" Background="Red" Foreground="Green" Value="{Binding Path=PlayerHealth,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="2.5" Grid.Column="0" HorizontalAlignment="Left" />
+                    <Label x:Name="playerHealthBarLabel" Content="{Binding PlayerHealth, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource statBarLabels}" Margin="2.5" Grid.Column="0"  />
 
                 </StackPanel>
                 <TextBox x:Name="CommandBox" Style="{StaticResource CommandBoxStyle}" Grid.Column="0" Width="529" Height="65" />
@@ -77,9 +77,9 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
-            <Button x:Name="InventoryButton" Background="PeachPuff" Style="{StaticResource ButtonStyle}" Margin ="2.5" Content="Inventory" Grid.Column="1" Click="InventoryButton_Click"/>
-            <Button x:Name="SkillsButton" Background="LightBlue" Style="{StaticResource ButtonStyle}" Margin="2.5" Content="Skills" Grid.Column="1" Click="SkillsButton_Click"/>
             <Button x:Name="AttackButton" Background="red" Style="{StaticResource ButtonStyle}" Margin="2.5" Content="Attack" Grid.Column="1" Click="AttackButton_Click"/>
+            <Button x:Name="SkillsButton" Background="LightBlue" Style="{StaticResource ButtonStyle}" Margin="2.5" Content="Skills" Grid.Column="1" Click="SkillsButton_Click"/>
+            <Button x:Name="InventoryButton" Background="PeachPuff" Style="{StaticResource ButtonStyle}" Margin ="2.5" Content="Inventory" Grid.Column="1" Click="InventoryButton_Click"/>
             </StackPanel>
             </Grid>
         </Grid>
