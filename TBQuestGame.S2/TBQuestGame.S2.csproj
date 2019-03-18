@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E75BE249-417C-49F7-966D-DC01C79177EC}</ProjectGuid>
+    <ProjectGuid>{F2A5503D-ADE3-401C-A78F-7A55F43907E7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TBQuestGame</RootNamespace>
     <AssemblyName>TBQuestGame</AssemblyName>
@@ -59,19 +59,37 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="BusinessLayer\GameBusiness.cs" />
     <Compile Include="DataLayer\A_Hero_Is_Born.cs" />
     <Compile Include="DataLayer\GameData.cs" />
     <Compile Include="DataLayer\StoryProperties.cs" />
+    <Page Include="PresentationLayer\GameSessionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PresentationLayer\MapDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PresentationLayer\PlayerSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Enemy.cs" />
+    <Compile Include="Models\GameMapCoordinates.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Map.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="PresentationLayer\GameSessionView.xaml.cs">
       <DependentUpon>GameSessionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PresentationLayer\GameSessionViewModel.cs" />
+    <Compile Include="PresentationLayer\MapDisplay.xaml.cs">
+      <DependentUpon>MapDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PresentationLayer\PlayerSetupView.xaml.cs">
       <DependentUpon>PlayerSetupView.xaml</DependentUpon>
     </Compile>
@@ -101,33 +119,58 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="PresentationLayer\GameSessionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PresentationLayer\PlayerSetupView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Resource Include="Images\archer-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\archer-icon.png" />
     <Resource Include="Images\backpack-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\Bandit.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\BloodPot.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\grayswordiconblack.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\grayswordTransparent.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\help.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\inventory_background.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\mage-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\MudCrawler.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\scuffedspider.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\ShieldHealth.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\ShieldHealthBIG.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\swendivericon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\sword-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\warrior-black.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\warrior-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MapIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
