@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TBQuestGame.PresentationLayer"
         mc:Ignorable="d"
-     Background="LightGray" Title="Swendiver - Main Game" Height="595.65" Width="950.084" ResizeMode="NoResize">
+     Background="LightGray" Title="Swendiver - Main Game" Height="595.65" Width="950.084" ResizeMode="NoResize" Closed="Close_Application">
 
     <Window.Resources>
         <Style x:Key="statBarLabels" TargetType="Label">
@@ -43,27 +43,31 @@
         </Style>
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="195*"/>
+            <ColumnDefinition Width="749*"/>
+        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="230"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="LocationLabel" Content="Current Location" HorizontalAlignment="Center" Style ="{StaticResource HeaderStyle}" Margin="551,90,239,44" Width="154"/>
-        <TextBox x:Name="LocationName" Text="{Binding CurrentLocationName}" IsReadOnly="True" Style="{StaticResource CommandBoxStyle}" Grid.Row="0" Height="35" Width="200" Margin="509,118,227,10"/>
+        <Label x:Name="LocationLabel" Content="Current Location" HorizontalAlignment="Center" Style ="{StaticResource HeaderStyle}" Margin="356.303,90,239,44" Width="154" Grid.Column="1"/>
+        <TextBox x:Name="LocationName" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding CurrentLocation.Name, Mode=OneWay}" IsReadOnly="True" Style="{StaticResource CommandBoxStyle}" Grid.Row="0" Height="35" Width="200" Margin="318.303,120,231,12" Grid.Column="1"/>
 
-        <TextBox x:Name="DialogueBox" Text="{Binding Path=Messages, Mode=OneWay}" IsReadOnly="True" Width="575" Style="{StaticResource CommandBoxStyle}" Margin="10,10,352.6,85"/>
-        <Image x:Name="speakerIcon" Margin="590,10,259.6,83"/>
-        <Button x:Name="GameOptions" Content="Menu" Style="{StaticResource ButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="0.479,0.735" Margin="0,10,-0.4,0" Click="GameOptions_Click"/>
-        <Button x:Name="OpenMap" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Margin="0,10,0,0" Click="OpenMap_Click">
+        <TextBox x:Name="DialogueBox" Text="{Binding CurrentLocation.LocationMessage, Mode=OneWay}" IsReadOnly="True" Width="575" Style="{StaticResource CommandBoxStyle}" Margin="13,10,356,85" Grid.ColumnSpan="2"/>
+        <Image x:Name="speakerIcon" Margin="395.303,10,260,83" Grid.Column="1"/>
+        <Button x:Name="GameOptions" Content="Menu" Style="{StaticResource ButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="0.479,0.735" Margin="0,10,0,0" Click="GameOptions_Click" Grid.Column="1"/>
+        <Button x:Name="OpenMap" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Margin="0,64,0,54" Click="OpenMap_Click" Grid.Column="1">
             <DockPanel>
                 <Image Source="/Images/MapIcon.png" Width="32" Height="32"/>
                 <ContentControl Content="Map" Margin="0,3,0,0"/>
             </DockPanel>
-            
+
         </Button>
-        <TextBox x:Name="TipsBox" Width="473" Style="{StaticResource CommandBoxStyle}" IsReadOnly="True" Margin="10,88,454.6,10"/>
-        <Grid Grid.Row="2">
+        <TextBox x:Name="TipsBox" Width="473" Style="{StaticResource CommandBoxStyle}" IsReadOnly="True" Margin="13,88,458,10" Grid.ColumnSpan="2"/>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,230,0,0.4" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="535"/>
                 <ColumnDefinition Width="*"/>
@@ -74,7 +78,7 @@
                     <Label x:Name="playerShieldBarLabel" Content="{Binding PlayerShield}" Style="{StaticResource statBarLabels}" Margin="2.5" Grid.Column ="0"  />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <ProgressBar x:Name="playerHealthBar" Width="400" Height="30" Background="Red" Foreground="Green" Value="{Binding Path=PlayerHealth,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="2.5" Grid.Column="0" HorizontalAlignment="Left" />
+                    <ProgressBar x:Name="playerHealthBar" Width="400" Height="30" Background="Red" Foreground="Green" Value="{Binding Path=PlayerHealth,UpdateSourceTrigger=PropertyChanged}" Margin="2.5" Grid.Column="0" HorizontalAlignment="Left" />
                     <Label x:Name="playerHealthBarLabel" Content="{Binding PlayerHealth, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource statBarLabels}" Margin="2.5" Grid.Column="0"  />
 
                 </StackPanel>
@@ -91,26 +95,26 @@
                 <Label Style="{StaticResource HeaderStyle}" HorizontalAlignment="Center" Content="Utilities"/>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
 
-                    <Button Style="{StaticResource ButtonStyle}" Width="95" Margin="0,0,5,0" Click="Button_Click">
+                    <Button x:Name="North_Button" Style="{StaticResource ButtonStyle}" Width="95" Margin="0,0,5,0" Click="Button_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/MapIcon.png" Width="32" Height="32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <ContentControl Margin="0,5,0,6">North</ContentControl>
                         </StackPanel>
 
                     </Button>
-                    <Button Style="{StaticResource ButtonStyle}" Width="95" Margin="0,0,5,0" Click="Button_Click_1">
+                    <Button x:Name="East_Button" Style="{StaticResource ButtonStyle}" Width="95" Margin="0,0,5,0" Click="Button_Click_1">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/TBQuestGame;component/Images/MapIcon.png" Width="32" Height="32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <ContentControl Margin="0,5,0,6" Content="East"/>
                         </StackPanel>
                     </Button>
-                    <Button Style="{StaticResource ButtonStyle}" Width="95" Margin="0,0,5,0" Click="Button_Click_2">
+                    <Button x:Name="South_Button" Style="{StaticResource ButtonStyle}" Width="95" Margin="0,0,5,0" Click="Button_Click_2">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/TBQuestGame;component/Images/MapIcon.png" Width="32" Height="32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <ContentControl Margin="0,5,0,6" Content="South"/>
                         </StackPanel>
                     </Button>
-                    <Button Style="{StaticResource ButtonStyle}" Width="95" Margin="0,0,5,0" Click="Button_Click_3">
+                    <Button x:Name="West_Button" Style="{StaticResource ButtonStyle}" Width="95" Margin="0,0,5,0" Click="Button_Click_3">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/TBQuestGame;component/Images/MapIcon.png" Width="32" Height="32" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <ContentControl Margin="0,5,0,6" Content="West"/>
@@ -129,7 +133,7 @@
 
             </Grid>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="400"/>
@@ -157,7 +161,9 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="Player" Height="30" Style="{StaticResource sectionLabel}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                 <Label Grid.Column="1" Content="Enemy" Height="30" Style="{StaticResource sectionLabel}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <Button Grid.Column="0" Width="100" Height="30" FontWeight="bold" FontSize="15" Margin="10" Content="Stats" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                <Image x:Name="PlayerPicture" Height="64" Width="64" Grid.Column="0"/>
+                <Image x:Name="EnemyPicture" Height="64" Width="64" Grid.Column="1"/>
+                <Button Grid.Column="0" Width="100" Height="30" FontWeight="bold" FontSize="15" Margin="10" Content="Stats" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.513" Click="Button_Click_4"/>
             </Grid>
 
 
@@ -170,13 +176,7 @@
             <Label x:Name="EnemiesList" Grid.Column="2" Content="List of Enemies" Style="{StaticResource HeaderStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="73.2,99,73.6,99.4"/>
 
             <ListBox x:Name="ActiveEnemies" BorderBrush="Black" BorderThickness="2" Grid.Column="2" Background="LightGray" Margin="0.2,30,-0.4,0.4" Grid.ColumnSpan="2">
-                <ListBoxItem Background="Red" BorderBrush="Black" BorderThickness="2">
-                    <StackPanel Orientation="Horizontal" >
-                        <Image Source="/Images/warrior-black.png" Width="32" Height="32"/>
-                        <TextBlock FontWeight="Bold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center">{LVL 30}</TextBlock>
-                        <TextBlock FontWeight="Bold" FontSize="15.5" VerticalAlignment="Center" HorizontalAlignment="Center">Black Knight</TextBlock>
-                    </StackPanel>
-                </ListBoxItem>
+
             </ListBox>
 
         </Grid>

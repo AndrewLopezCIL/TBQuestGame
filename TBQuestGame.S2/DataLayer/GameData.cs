@@ -49,47 +49,65 @@ namespace TBQuestGame.DataLayer
             int columns = 4;
 
             Map gameMap = new Map(rows, columns);
-             
+
             gameMap.MapLocations[0, 0] = new Location()
             {
                 Id = 4,
-                Name = "The Dark Forest Swamp",
-                Description = "The Dark Forest Swamp is home to dangerous swamp like creatures that aren't very fond of humans.",
-                Accessible = true
+                Name = "Yin Village",
+                Description = "Yin Village used to be home to humans, but was over ran by a group of bandits.",
+                Accessible = true,
+                BossFightRoom = false,
+                ChanceOfFight = true,
+                LocationMessage = "You look around to see your village\n overran by a group of bandits...\n" +
+                "Where do you decide to run?"
             };
             gameMap.MapLocations[0, 1] = new Location()
             {
                 Id = 1,
-                Name = "Yin Village",
-                Description = "Yin Village used to be home to humans, but was over ran by a group of bandits.",
-                Accessible = true
+                Name = "The Dark Forest Swamp",
+                Description = "The Dark Forest Swamp is home to dangerous swamp like creatures that aren't very fond of humans.",
+                Accessible = true,
+                BossFightRoom = false,
+                ChanceOfFight = true,
+                LocationMessage = "You're in the Dark Forest and run into a monster!" + 
+                "It starts attacking you!"
+
             };
-             
+
             gameMap.MapLocations[1, 1] = new Location()
             {
-                Id = 2,
+                Id = 3,
                 Name = "Vickren Dungeon",
                 Description = "Vickren Dungeon is where the Goblin Master resides... [ BOSS ROOM ]",
-                Accessible = true
+                Accessible = true, 
+                ChanceOfFight = false,
+                BossFightRoom = true,
+                LocationMessage = "This is the location message for the Vickren Dungeon..."
             };
             gameMap.MapLocations[1, 2] = new Location()
             {
-                Id = 2,
+                Id = 4,
                 Name = "Kardon Dungeon",
                 Description = "Kardon Dungeon is where the Great Kardon Dragon resides... [ BOSS ROOM ]",
-                Accessible = false
+                Accessible = false,
+                ChanceOfFight = false,
+                BossFightRoom = true,
+                LocationMessage = "This is the location message for Kardon Dungeon..."
             }; 
             gameMap.MapLocations[2, 0] = new Location()
             {
-                Id = 3,
+                Id = 5,
                 Name = "Rohand Village",
                 Description = "Rohand Village is home to the only humans left on the planet.",
-                Accessible = false };
+                Accessible = false, BossFightRoom = false, ChanceOfFight = true, LocationMessage = "This is the location message for Rohand Village..." };
             gameMap.MapLocations[2, 1] = new Location()
             {
-                Id = 4,
+                Id = 2,
                 Name = "The Dark Forest",
-                Description = "The Dark Forest is home to many evil forces that try and wipe out humanity.", Accessible = true
+                Description = "The Dark Forest is home to many evil forces that try and wipe out humanity.", Accessible = true,
+                BossFightRoom = false,
+                ChanceOfFight = true,
+                LocationMessage = "This is the location message for The Dark Forest..."
             }; 
             return gameMap;
         }

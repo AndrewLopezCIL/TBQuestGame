@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TBQuestGame.PresentationLayer;
 
 namespace TBQuestGame.Models
 {
@@ -25,6 +26,23 @@ namespace TBQuestGame.Models
 
         private string _description;
 
+        private string locationMessage;
+
+        public string LocationMessage
+        {
+            get { return locationMessage; }
+            set { locationMessage = value; }
+        }
+
+        private bool _fightChance;
+
+        public bool ChanceOfFight
+        {
+            get { return _fightChance; }
+            set { _fightChance = value; }
+        }
+
+
         public string Description
         {
             get { return _description; }
@@ -46,8 +64,23 @@ namespace TBQuestGame.Models
             set { _fightRoom = value; }
         }
 
+       
+        public static void enableControls(GameSessionView view)
+        {
+            view.North_Button.IsEnabled = true;
+            view.East_Button.IsEnabled = true;
+            view.South_Button.IsEnabled = true;
+            view.West_Button.IsEnabled = true;
+        }
+        public static void disableControls(GameSessionView view)
+        {
+            view.North_Button.IsEnabled = false;
+            view.East_Button.IsEnabled = false;
+            view.West_Button.IsEnabled = false;
+            view.South_Button.IsEnabled = false;
+        }
 
-
+      
 
 
     }

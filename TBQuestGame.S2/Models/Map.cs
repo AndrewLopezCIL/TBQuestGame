@@ -9,7 +9,10 @@ using System.Collections.ObjectModel;
 
 namespace TBQuestGame.Models
 {
-   public class Map
+    /// <summary>
+    /// game map class
+    /// </summary>
+    public class Map : ObservableObject
     {
         #region FIELDS
 
@@ -40,7 +43,6 @@ namespace TBQuestGame.Models
 
         #endregion
 
-
         #region CONSTRUCTORS
 
         public Map(int rows, int columns)
@@ -52,7 +54,6 @@ namespace TBQuestGame.Models
 
         #endregion
 
-
         #region METHODS
 
         public void MoveNorth()
@@ -62,7 +63,7 @@ namespace TBQuestGame.Models
             //
             if (_currentLocationCoordinates.Row > 0)
             {
-                _currentLocationCoordinates.Row -= 1;
+                _currentLocationCoordinates.Row -= 1; 
             }
         }
 
@@ -73,7 +74,7 @@ namespace TBQuestGame.Models
             //
             if (_currentLocationCoordinates.Column < _maxColumns - 1)
             {
-                _currentLocationCoordinates.Column += 1;
+                _currentLocationCoordinates.Column += 1; 
             }
         }
 
@@ -81,7 +82,7 @@ namespace TBQuestGame.Models
         {
             if (_currentLocationCoordinates.Row < _maxRows - 1)
             {
-                _currentLocationCoordinates.Row += 1;
+                _currentLocationCoordinates.Row += 1; 
             }
         }
 
@@ -92,14 +93,15 @@ namespace TBQuestGame.Models
             //
             if (_currentLocationCoordinates.Column > 0)
             {
-                _currentLocationCoordinates.Column -= 1;
+
+                _currentLocationCoordinates.Column -= 1; 
             }
         }
 
         //
         // get the north location if it exists
         //
-        public Location NorthLocation(Player player)
+        public Location NorthLocation()
         {
             Location northLocation = null;
 
@@ -111,10 +113,9 @@ namespace TBQuestGame.Models
                 Location nextNorthLocation = _mapLocations[_currentLocationCoordinates.Row - 1, _currentLocationCoordinates.Column];
 
                 //
-                // location exists and player can access location
+                // location exists
                 //
-                if (nextNorthLocation != null &&
-                    (nextNorthLocation.Accessible == true))
+                if (nextNorthLocation != null)
                 {
                     northLocation = nextNorthLocation;
                 }
@@ -126,7 +127,7 @@ namespace TBQuestGame.Models
         //
         // get the east location if it exists
         //
-        public Location EastLocation(Player player)
+        public Location EastLocation()
         {
             Location eastLocation = null;
 
@@ -138,10 +139,9 @@ namespace TBQuestGame.Models
                 Location nextEastLocation = _mapLocations[_currentLocationCoordinates.Row, _currentLocationCoordinates.Column + 1];
 
                 //
-                // location exists and player can access location
+                // location exists 
                 //
-                if (nextEastLocation != null &&
-                    (nextEastLocation.Accessible == true  ))
+                if (nextEastLocation != null)
                 {
                     eastLocation = nextEastLocation;
                 }
@@ -153,7 +153,7 @@ namespace TBQuestGame.Models
         //
         // get the south location if it exists
         //
-        public Location SouthLocation(Player player)
+        public Location SouthLocation()
         {
             Location southLocation = null;
 
@@ -167,8 +167,7 @@ namespace TBQuestGame.Models
                 //
                 // location exists and player can access location
                 //
-                if (nextSouthLocation != null &&
-                    (nextSouthLocation.Accessible == true ))
+                if (nextSouthLocation != null)
                 {
                     southLocation = nextSouthLocation;
                 }
@@ -180,7 +179,7 @@ namespace TBQuestGame.Models
         //
         // get the west location if it exists
         //
-        public Location WestLocation(Player player)
+        public Location WestLocation()
         {
             Location westLocation = null;
 
@@ -194,8 +193,7 @@ namespace TBQuestGame.Models
                 //
                 // location exists and player can access location
                 //
-                if (nextWestLocation != null &&
-                    (nextWestLocation.Accessible == true))
+                if (nextWestLocation != null)
                 {
                     westLocation = nextWestLocation;
                 }
@@ -203,7 +201,7 @@ namespace TBQuestGame.Models
 
             return westLocation;
         }
-
-        #endregion
     }
 }
+
+        #endregion

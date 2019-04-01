@@ -8,7 +8,7 @@ using TBQuestGame.Models;
 using TBQuestGame.PresentationLayer;
 namespace TBQuestGame.PresentationLayer
 {
-    public class GameSessionViewModel
+    public class GameSessionViewModel : ObservableObject
     {
         #region FIELDS
         private Player _player;
@@ -18,8 +18,16 @@ namespace TBQuestGame.PresentationLayer
         private Location _currentLocation;
         private string _currentLocationName;
         private ObservableCollection<Location> _accessibleLocations;
+        public List<Location> bossesDefeated = new List<Location>();
+        private int _missionLength = 0;
 
-         
+        public int MissionLength
+        {
+            get { return _missionLength; }
+            set { _missionLength = value; }
+        }
+
+
         public string CurrentLocationName
         {
             get { return _currentLocationName; }
@@ -33,7 +41,7 @@ namespace TBQuestGame.PresentationLayer
             set { _currentLocation = value; }
         }
 
-
+         
         private List<string> _messages;
         #endregion
 
@@ -69,8 +77,7 @@ namespace TBQuestGame.PresentationLayer
         }
         #endregion
 
-        #region METHODS
-        
+        #region METHODS 
         #endregion
 
         #region CONSTRUCTORS
@@ -78,6 +85,7 @@ namespace TBQuestGame.PresentationLayer
         {
 
         }
+
         public GameSessionViewModel(Player player, List<string>initialMessages, Map gameMap, GameMapCoordinates currentLocationCoordinates)
         {
             _playerShield = player.Shield;
@@ -91,6 +99,7 @@ namespace TBQuestGame.PresentationLayer
             _currentLocation = _gameMap.CurrentLocation; 
 
         }
+        
         #endregion
 
     }

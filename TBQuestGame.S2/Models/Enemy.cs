@@ -10,6 +10,7 @@ namespace TBQuestGame.Models
     {
 
         #region FIELDS
+ 
         private double _health;
         private double _baseAttack = 2.9;
         private double _criticalAttack;
